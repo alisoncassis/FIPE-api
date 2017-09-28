@@ -1,0 +1,23 @@
+{
+  "name": "fipe-api",
+  "version": "1.0.0",
+  "description": "teste application to implement the FIPE API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alisoncassis/FIPE-api.git"
+  },
+  "author": "Alison Cassis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alisoncassis/FIPE-api/issues"
+  },
+  "homepage": "https://github.com/alisoncassis/FIPE-api#readme",
+  "dependencies": {
+    "express": "^4.15.5"
+  }
+}
