@@ -1,0 +1,18 @@
+footer {
+    background-color: #041e7c;
+    color: #fff;
+    padding: 15px;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+}
+
+footer button {
+    border-radius: 30px;
+    height: 35px;
+    width: 100%;
+    border: none;
+    outline-color: transparent;
+    cursor: pointer;
+}

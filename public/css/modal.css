@@ -1,0 +1,7 @@
+.fepi-modal {
+    position: fixed;
+    top: 40px;
+    text-align: center;
+    color: #fff;
+    background: red;
+}

@@ -1,11 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta charset="utf-8">
-        <title>FIPE-API</title>
-    </head>
-    <body>
-        dasdad
-    </body>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>FIPE-API</title>
+    <link href="css/reset.css" rel="stylesheet">
+    <link href="css/header.css" rel="stylesheet">
+    <link href="css/modal.css" rel="stylesheet">
+    <link href="css/footer.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <h1>FIPE API test application</h1>
+    </header>
+    <section class="fepi-modal">
+        <h2>Qual o seu veículo?</h2>
+        <div class="modal-block type-search">
+            <label for="car_plate">Procurar pela placa:</label>
+            <input type="text" id="car_plate" value="">
+            <h3>OU</h3>
+            <button type="button" id="btn_vehicle_data" name="button">Buscar por modelo</button>
+        </div>
+        <!-- <div class="modal-block vehicle-data">
+            <label for="car_brand">Marca</label>
+            <input type="text" placeholder="BMW, Fiat ..." id="car_brand">
+            <label for="car_year">Ano</label>
+            <input type="number" id="car_year">
+            <label for="car_model">Modelo</label>
+            <input type="text" placeholder="Palio ..." id="car_model">
+        </div> -->
+    </section>
+    <footer>
+        <button id="btn_budget" type="button" name="button">Orçamento</button>
+        <!-- <button id="btn_confirm" type="button" name="button">Confirmar</button>
+        <button id="btn_cancel" type="button" name="button">Voltar</button> -->
+    </footer>
+    <script type="text/javascript" src="js/main.js"/>
+</body>
 </html>
