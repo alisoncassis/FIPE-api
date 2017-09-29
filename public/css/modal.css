@@ -1,7 +1,72 @@
 .fepi-modal {
     position: fixed;
-    top: 40px;
+    visibility: hidden;
+    opacity: 0;
+    top: 15%;
     text-align: center;
     color: #fff;
+    padding: 15px 0 40px 0;
+    z-index: 2;
+    right: 10px;
+    left: 10px;
+    background: rgba(35, 35, 35, 0.9);
+    border-radius: 25px;
+    min-height: 280px;
+
+}
+
+.fepi-modal.show {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s linear;
+}
+
+.fepi-modal h2 {
+    font-size: 22px;
+}
+
+.type-search label {
+    display: block;
+    font-size: 18px;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+.type-search input {
+    border-radius: 30px;
+    border: none;
+    outline-color: transparent;
+    padding: 10px;
+    max-width: 280px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.overlay {
     background: red;
+    width: 100%;
+    height: 100%;
+}
+
+.fepi-modal .modal-block {
+    position: relative;
+    padding-top: 30px;
+}
+
+.type-search h3 {
+    font-size: 20px;
+    padding-top: 50px;
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.type-search button {
+    border: none;
+    outline-color: transparent;
+    padding: 15px;
+    border-radius: 15px;
+    width: 100%;
+    max-width: 280px;
+    cursor: pointer;
+    background: rgba(240, 240, 240, 0.97);
 }
