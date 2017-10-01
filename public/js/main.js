@@ -16,6 +16,7 @@ const btnVehicleData = document.querySelector('#btn_vehicle_data')
 const typeSearch = document.querySelector('.type-search')
 const vehicleData = document.querySelector('.vehicle-data')
 const snackbar = document.querySelector('.snackbar')
+const brandTemplate = document.querySelector('#brand_template')
 const params = {
     vehicle: '',
     brands: '',
@@ -48,7 +49,18 @@ function hideFIPEModal() {
 
 function mountBrands() {
     params.brands.forEach((brand) => {
-        brandList.appendChild(new Option(brand.name, brand.name, false))
+        brandTemplate.appendChild(new Option(brand.name, brand.name, false))
+    })
+    var templateContent = brandTemplate.content;
+    console.log(templateContent)
+    brand.addEventListener('keyup', function handler(event) {
+        while (brandList.children.length) brandList.removeChild(brandList.firstChild);
+        var inputVal = new RegExp(event.target.value.trim(), 'i');
+        var set = Array.prototype.reduce.call(templateContent.cloneNode(true).children, function searchFilter(frag, item, i) {
+            if (inputVal.test(item.textContent) && frag.children.length < 6) frag.appendChild(item);
+            return frag;
+        }, document.createDocumentFragment());
+        brandList.appendChild(set)
     })
 }
 function mountModels() {
@@ -130,6 +142,6 @@ function vehicleResponse() {
         snackbarAnimation()
     } else {
         fillVechicleData()
-        btnSearch.click()
+        showVehicleDataModal()
     }
 }
