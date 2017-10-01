@@ -1,4 +1,4 @@
-.fepi-modal {
+.fipe-modal {
     position: fixed;
     visibility: hidden;
     opacity: 0;
@@ -6,33 +6,32 @@
     text-align: center;
     color: #fff;
     padding: 15px 0 40px 0;
-    z-index: 2;
     right: 10px;
     left: 10px;
     background: rgba(35, 35, 35, 0.9);
     border-radius: 25px;
     min-height: 280px;
-
+    transition: opacity 0.5s linear, visibility 0.3s;
 }
 
-.fepi-modal.show {
+.fipe-modal.show {
     visibility: visible;
     opacity: 1;
     transition: opacity 0.5s linear;
 }
 
-.fepi-modal h2 {
+.fipe-modal h2 {
     font-size: 22px;
 }
 
-.type-search label {
+.modal-block label {
     display: block;
     font-size: 18px;
-    padding-bottom: 15px;
+    padding: 15px 0;
     text-align: center;
 }
 
-.type-search input {
+.modal-block input {
     border-radius: 30px;
     border: none;
     outline-color: transparent;
@@ -48,19 +47,20 @@
     height: 100%;
 }
 
-.fepi-modal .modal-block {
-    position: relative;
-    padding-top: 30px;
+.fipe-modal .modal-block {
+    position: absolute;
+    margin: 30px auto;
+    min-width: 100%;
 }
 
-.type-search h3 {
+.modal-block h3 {
     font-size: 20px;
     padding-top: 50px;
     text-align: center;
     padding-bottom: 50px;
 }
 
-.type-search button {
+.modal-block button {
     border: none;
     outline-color: transparent;
     padding: 15px;
@@ -69,4 +69,28 @@
     max-width: 280px;
     cursor: pointer;
     background: rgba(240, 240, 240, 0.97);
+}
+
+.vehicle-data {
+    left: 100%;
+    transition: left 0.5s ease-in;
+}
+
+.type-search input {
+    text-transform: uppercase;
+}
+
+.type-search {
+    left: 0;
+    transition: left 0.5s ease-in;
+}
+
+.type-search.hide {
+    left: -100%;
+    transition: left 0.5s ease-in;
+}
+
+.vehicle-data.show {
+    left: 0;
+    transition: left 0.5s ease-in;
 }

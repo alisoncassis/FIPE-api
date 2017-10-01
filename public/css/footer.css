@@ -1,5 +1,5 @@
 footer {
-    background-color: #041e7c;
+    background-color: rgb(125, 125, 125);
     color: #fff;
     padding: 15px;
     position: fixed;
@@ -12,7 +12,56 @@ footer button {
     border-radius: 30px;
     height: 35px;
     width: 100%;
+    color: #fff;
     border: none;
     outline-color: transparent;
     cursor: pointer;
+}
+
+.wrapperSearch button, .wrapperData button {
+    width: calc(50% - 10px);
+    float: left;
+    margin: 0 5px;
+}
+
+footer div {
+    position: relative;
+}
+
+.wrapperBudget.hide {
+    display: none;
+}
+
+footer .wrapperSearch, footer .wrapperData {
+    display: none;
+}
+
+.wrapperSearch.show, .wrapperData.show {
+    display: block;
+}
+
+.snackbar {
+   display: block;
+   min-width: 250px;
+   color: #fff;
+   background-color: #d03e3e;
+   text-align: center;
+   border-radius: 15px;
+   padding: 16px;
+   position: fixed;
+   z-index: 10;
+   right: 5%;
+   top: -50px;
+}
+.snackbar.show {
+    top: 40px;
+    transition: top 1s linear;
+}
+
+footer button.red {
+    background: #ff4a4a;
+}
+
+footer button.green {
+    background: rgb(0, 187, 61);
 }

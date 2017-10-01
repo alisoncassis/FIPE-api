@@ -14,29 +14,63 @@
         <h1>FIPE API test application</h1>
     </header>
     <div class="overlay"></div>
-    <section class="fepi-modal">
+    <section class="fipe-modal">
         <h2>Qual o seu veículo?</h2>
         <div class="box">
             <div class="modal-block type-search">
                 <label for="plate">Procurar pela placa:</label>
-                <input type="text" id="plate" value=""/>
+                <input type="text" id="plate" value="" placeholder="AAA1234" maxlength="8" pattern="[0-9]{3}"/>
                 <h3>OU</h3>
                 <button type="button" id="btn_vehicle_data" name="button">Buscar por modelo</button>
             </div>
             <div class="modal-block vehicle-data">
-                <label for="car_brand">Marca</label>
-                <input type="text" placeholder="BMW, Fiat ..." id="car_brand">
-                <label for="car_year">Ano</label>
-                <input type="number" id="car_year">
-                <label for="car_model">Modelo</label>
-                <input type="text" placeholder="Palio ..." id="car_model">
+                <label for="brand">Marca</label>
+                <input type="text" placeholder="BMW, Fiat ..." id="brand" list="brand_list">
+                <datalist id="brand_list">
+                </datalist>
+                <label for="year">Ano</label>
+                <input type="number" id="year" list="year_list" min="2000" max="2018">
+                <datalist id="year_list">
+                    <option value="2000">
+                    <option value="2001">
+                    <option value="2002">
+                    <option value="2003">
+                    <option value="2004">
+                    <option value="2005">
+                    <option value="2006">
+                    <option value="2007">
+                    <option value="2008">
+                    <option value="2009">
+                    <option value="2010">
+                    <option value="2011">
+                    <option value="2012">
+                    <option value="2013">
+                    <option value="2014">
+                    <option value="2015">
+                    <option value="2016">
+                    <option value="2017">
+                    <option value="2018">
+                </datalist>
+                <label for="model">Modelo</label>
+                <input type="text" placeholder="Palio ..." id="model" list="model_list" disabled>
+                <datalist id="model_list">
+                </datalist>
             </div>
         </div>
     </section>
     <footer>
-        <button id="btn_budget" type="button" name="button">Orçamento</button>
-        <!-- <button id="btn_confirm" type="button" name="button">Confirmar</button>
-        <button id="btn_cancel" type="button" name="button">Voltar</button> -->
+        <div class="wrapperBudget">
+            <button id="btn_budget" type="button" class="green" name="button">Orçamento</button>
+        </div>
+        <div class="wrapperSearch">
+            <button id="btn_cancel" type="button" class="red" name="button">Cancelar</button>
+            <button id="btn_search" type="button" class="green" name="button">Buscar</button>
+        </div>
+        <div class="wrapperData">
+            <button id="btn_back" type="button" class="red" name="button">Voltar</button>
+            <button id="btn_confirm" type="button" class="green" name="button">Confirmar</button>
+        </div>
+        <div class="snackbar">Houve algum erro, tente novamente</div>
     </footer>
     <script src="js/main.js"></script>
 </body>
