@@ -1,5 +1,5 @@
 .fipe-modal {
-    position: fixed;
+    position: absolute;
     visibility: hidden;
     opacity: 0;
     top: 15%;
@@ -12,6 +12,7 @@
     border-radius: 25px;
     min-height: 280px;
     transition: opacity 0.5s linear, visibility 0.3s;
+    margin-bottom: 100px;
 }
 
 .fipe-modal.show {
@@ -72,7 +73,7 @@
 }
 
 .vehicle-data {
-    left: 100%;
+    left: -100%;
     transition: left 0.5s ease-in;
 }
 
