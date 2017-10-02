@@ -40,7 +40,7 @@ window.onload = function() {
     brand.addEventListener('keyup', mountBrandList)
     brand.onchange = mountModels
     year.addEventListener('keyup', mountYearList)
-    year.onchange = () => setTimeout(function() { model.focus() }, 20)
+    year.onchange = () => setTimeout(function() { model.focus(); goTo('model') }, 20)
     model.addEventListener('keyup', mountModelList)
     mountyears()
 }
@@ -152,6 +152,7 @@ function mountModels() {
     const brandSearch = params.brands.filter(arrBrand => arrBrand.name == brand.value)
     getRequest(`api/models?brand=${brandSearch[0].id}`, 'models', mountModelsOptions)
     setTimeout(function() { year.focus() }, 20)
+    goTo('year')
 }
 
 function mountModelsOptions() {
@@ -233,4 +234,8 @@ function vehicleResponse() {
         fillVechicleData()
         showVehicleDataModal()
     }
+}
+
+function goTo(id) {
+    window.scroll(0, document.querySelector(`#${id}`).offsetTop);
 }
