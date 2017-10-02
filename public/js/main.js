@@ -4,6 +4,7 @@ const plate = document.querySelector('#plate')
 const brand = document.querySelector('#brand')
 const brandList = document.querySelector('#brand_list')
 const modelList = document.querySelector('#model_list')
+const yearList = document.querySelector('#year_list')
 const year = document.querySelector('#year')
 const model = document.querySelector('#model')
 const wrapperBudget = document.querySelector('.wrapperBudget')
@@ -17,21 +18,31 @@ const typeSearch = document.querySelector('.type-search')
 const vehicleData = document.querySelector('.vehicle-data')
 const snackbar = document.querySelector('.snackbar')
 const brandTemplate = document.querySelector('#brand_template')
+const years = ['2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008' ,'2009' ,'2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018']
 const params = {
     vehicle: '',
     brands: '',
-    models: ''
+    models: '',
+    fiveBrands: '',
+    fiveModels: '',
+    years,
+    fiveYears: ''
 }
 
 window.onload = function() {
-    plate.onchange = searchByPlate
+    plate.onchange =  searchByPlate
     btnBudget.onclick = showFIPEModal
     btnCancel.onclick = hideFIPEModal
     btnSearch.onclick = searchByPlate
     btnBack.onclick = hideVehicleDataModal
     btnVehicleData.onclick = showVehicleDataModal
     getRequest('api/brands', 'brands', mountBrands)
+    brand.addEventListener('keyup', mountBrandList)
     brand.onchange = mountModels
+    year.addEventListener('keyup', mountYearList)
+    year.onchange = () => setTimeout(function() { model.focus() }, 20)
+    model.addEventListener('keyup', mountModelList)
+    mountyears()
 }
 
 function showFIPEModal() {
@@ -48,21 +59,90 @@ function hideFIPEModal() {
 }
 
 function mountBrands() {
-    params.brands.forEach((brand) => {
-        brandTemplate.appendChild(new Option(brand.name, brand.name, false))
+    params.fiveBrands = []
+    params.brands.filter(option => {
+        if(params.fiveBrands.length < 5) {
+            params.fiveBrands.push(option)
+        } else {
+            return;
+        }
     })
-    var templateContent = brandTemplate.content;
-    console.log(templateContent)
-    brand.addEventListener('keyup', function handler(event) {
-        while (brandList.children.length) brandList.removeChild(brandList.firstChild);
-        var inputVal = new RegExp(event.target.value.trim(), 'i');
-        var set = Array.prototype.reduce.call(templateContent.cloneNode(true).children, function searchFilter(frag, item, i) {
-            if (inputVal.test(item.textContent) && frag.children.length < 6) frag.appendChild(item);
-            return frag;
-        }, document.createDocumentFragment());
-        brandList.appendChild(set)
+    params.fiveBrands.forEach((brand) => {
+        brandList.appendChild(new Option(brand.name, brand.name, false))
     })
 }
+
+function mountyears() {
+    params.fiveYears = []
+    params.years.filter(option => {
+        if(params.fiveYears.length < 5) {
+            params.fiveYears.push(option)
+        } else {
+            return;
+        }
+    })
+    params.fiveYears.forEach(option => {
+        yearList.appendChild(new Option(option, option, false))
+    })
+}
+
+function mountBrandList(event) {
+    while(brandList.hasChildNodes()) {
+        brandList.removeChild(brandList.firstChild);
+    }
+    params.fiveBrands = []
+    params.brands.forEach(option => {
+        if(option.name.includes(event.target.value.toUpperCase())) {
+            if (params.fiveBrands.length < 5) {
+                params.fiveBrands.push(option)
+            } else {
+                return;
+            }
+        }
+    })
+    params.fiveBrands.forEach((brand) => {
+        brandList.appendChild(new Option(brand.name, brand.name, false))
+    })
+}
+
+function mountYearList(event) {
+    while(yearList.hasChildNodes()) {
+        yearList.removeChild(yearList.firstChild);
+    }
+    params.fiveYears = []
+    params.years.forEach(option => {
+        if(option.indexOf(event.target.value.toString()) !== -1) {
+            if (params.fiveYears.length < 5) {
+                params.fiveYears.push(option)
+            } else {
+                return;
+            }
+        }
+    })
+    params.fiveYears.forEach((option) => {
+        yearList.appendChild(new Option(option, option, false))
+    })
+}
+
+function mountModelList(event) {
+    while(modelList.hasChildNodes()) {
+        modelList.removeChild(modelList.firstChild);
+    }
+    params.fiveModels = []
+    params.models.forEach(option => {
+        if(option.name.includes(event.target.value.toUpperCase())) {
+            if (params.fiveModels.length < 5) {
+                params.fiveModels.push(option)
+            } else {
+                return;
+            }
+        }
+    })
+    params.fiveModels.forEach((model) => {
+        modelList.appendChild(new Option(model.name, model.name, false))
+    })
+}
+
 function mountModels() {
     model.value = ''
     while(modelList.hasChildNodes()) {
@@ -71,10 +151,19 @@ function mountModels() {
     model.removeAttribute('disabled')
     const brandSearch = params.brands.filter(arrBrand => arrBrand.name == brand.value)
     getRequest(`api/models?brand=${brandSearch[0].id}`, 'models', mountModelsOptions)
+    setTimeout(function() { year.focus() }, 20)
 }
 
 function mountModelsOptions() {
-    params.models.forEach((model) => {
+    params.fiveModels = []
+    params.models.filter(option => {
+        if(params.fiveModels.length < 5) {
+            params.fiveModels.push(option)
+        } else {
+            return;
+        }
+    })
+    params.fiveModels.forEach((model) => {
         modelList.appendChild(new Option(model.name, model.name, false))
     })
 }
